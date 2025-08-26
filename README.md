@@ -1,5 +1,39 @@
 # 🐜 Termite Detection and Extermination System using Machine Learning  
 
+## 🚀 Features  
+- Non-chemical, eco-friendly termite control  
+- Multi-modal detection for higher reliability  
+- Extermination with safety logic  
+- Portable, user-friendly hardware design
+
+---
+
+## ⚙️ How It Works  
+
+<img width="797" height="475" alt="Instruction" src="https://github.com/user-attachments/assets/ab5b0b4a-1656-42f4-b3f8-3a2ffa242e56" />
+
+1. **Image Detection**  
+   - Detects termite holes using a trained ML model.  
+   <img width="2048" height="1536" alt="Image Detection" src="https://github.com/user-attachments/assets/3012b93f-94b0-458d-9518-1d35f194c329" />
+
+2. **Acoustic Analysis**  
+   - Detects hollow wood sound patterns.  
+   <img width="800" height="477" alt="Solid Wood Detected" src="https://github.com/user-attachments/assets/28e546a5-61a0-4c47-b4e8-16d67972a2e3" />
+  <img width="798" height="477" alt="Papery-sounding Wood Detected" src="https://github.com/user-attachments/assets/1fc1d3eb-05e1-4284-ad36-bbc90ec744aa" />
+
+3. **Thermal Imaging**  
+   - Identifies temperature anomalies in infested wood.  
+   <img width="800" height="472" alt="Thermal Scan Example" src="https://github.com/user-attachments/assets/8c21d358-0887-41e1-82b3-dccc2c6ae428" />
+   <img width="794" height="484" alt="Hotspot Detected" src="https://github.com/user-attachments/assets/0e77693e-9aa5-467f-8ffb-4cdafbfeb5d5" />
+   <img width="798" height="478" alt="No Hotspot Detected" src="https://github.com/user-attachments/assets/6179b7fe-dd35-4ff0-afc3-796f2cfd2907" />
+
+4. **Hot Air Extermination**  
+   - Applies heat when infestation is confirmed.
+   <img width="799" height="473" alt="Result for Enabled Extermination" src="https://github.com/user-attachments/assets/74135b63-ccdb-4e36-b305-0f23bb1fb436" />
+   <img width="799" height="478" alt="Result for Disabled Extermination" src="https://github.com/user-attachments/assets/47d07111-9561-4604-af34-300fe4feca3f" />
+ 
+---
+
 ## 📌 Overview  
 This project presents a **Termite Detection and Extermination System** designed for regular household wooden structures.  
 The system integrates **acoustic sensing, thermal imaging, and machine learning-based image detection** to identify termite infestations, while extermination is performed through a **directed hot air mechanism**.  
@@ -63,14 +97,6 @@ Our system combines **non-invasive detection** and **eco-friendly extermination*
 - ✅ Usability – Highest rating  
 - ✅ Safety – High  
 - ⚠️ Performance Efficiency – Needs improvement  
-
----
-
-## 🚀 Features  
-- Non-chemical, eco-friendly termite control  
-- Multi-modal detection for higher reliability  
-- Extermination with safety logic  
-- Portable, user-friendly hardware design  
 
 ---
 
