@@ -27,6 +27,11 @@
    <img width="794" height="484" alt="Hotspot Detected" src="https://github.com/user-attachments/assets/0e77693e-9aa5-467f-8ffb-4cdafbfeb5d5" />
    <img width="798" height="478" alt="No Hotspot Detected" src="https://github.com/user-attachments/assets/6179b7fe-dd35-4ff0-afc3-796f2cfd2907" />
 
+4. **Detection Result**
+   - Displays the result of the three detection methods that serve as the basis for the system to enable or disable the extermination component.
+     <img width="799" height="474" alt="Positive Detection" src="https://github.com/user-attachments/assets/0a9b68b5-1592-4359-8c7b-1b2402962049" />
+     <img width="793" height="475" alt="Negative Detection" src="https://github.com/user-attachments/assets/7be7fba7-ad76-4ec9-81c2-056bac053a8d" />
+
 4. **Hot Air Extermination**  
    - Applies heat when infestation is confirmed.
    <img width="799" height="473" alt="Result for Enabled Extermination" src="https://github.com/user-attachments/assets/74135b63-ccdb-4e36-b305-0f23bb1fb436" />
