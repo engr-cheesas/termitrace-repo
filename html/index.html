@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launch Dashboard</title>
+    <script>
+        window.onload = function () {
+            let win = window.open("Idle.html", "_self", "width=800,height=480,scrollbars=no,resizable=no");
+            if (win) {
+                win.moveTo((screen.width - 800) / 2, (screen.height - 480) / 2); 
+            } else {
+                alert("Popup blocked! Allow popups for this site.");
+            }
+            window.close(); 
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>

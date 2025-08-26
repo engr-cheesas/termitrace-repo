@@ -1,0 +1,44 @@
+<?php
+header("Content-Type: text/event-stream");  // Enable real-time updates
+header("Cache-Control: no-cache");
+header("Connection: keep-alive");
+header("Access-Control-Allow-Origin: *");  // Allow requests from other origins
+
+$serialPort = "/dev/ttyUSB0";  // Update based on your system
+
+// Ensure permissions
+shell_exec("sudo chmod 777 $serialPort");
+
+// Configure serial port
+shell_exec("stty -F $serialPort 9600 raw -echo");
+
+// Open serial port
+$serial = fopen($serialPort, "w+");
+if (!$serial) {
+    echo "event: error\ndata: ERROR: Could not open serial port!\n\n";
+    exit;
+}
+
+// Send command '3' to Arduino
+fwrite($serial, "3");
+usleep(500000);  // Small delay (0.5 sec)
+
+// Read response until "DONE"
+$timeout = time() + 10;  // Max wait 10 sec
+while (time() < $timeout) {
+    $line = fgets($serial);  // Read line from serial
+
+    if ($line) {
+        $line = trim($line);
+        echo "data: $line\n\n";  // Send response to frontend
+        ob_flush();
+        flush();
+
+        if ($line == "DONE") {
+            break;
+        }
+    }
+}
+
+fclose($serial);
+?>

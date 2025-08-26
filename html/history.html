@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History UI</title>
+    <link rel="stylesheet" href="History.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <span></span>
+            <span>Date</span>
+            <span>Thermal</span>
+            <span>Hollowness</span>
+            <span>Image</span>
+            <span>Termite %</span>
+        </div>
+
+        <!-- History List Table -->
+        <div class="history-list">
+            <table>
+                <tbody id="historyTable">
+                    <!-- Data will be inserted dynamically here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer with Buttons -->
+        <div class="footer">
+            <button class="btn" onclick="goPrevious()">PREVIOUS</button>
+            <button class="btn delete" id="delete-btn" disabled onclick="deleteSelected()">DELETE HISTORY</button>
+        </div>
+    </div>
+
+    <script>
+        const historyData = [
+            { date: "2025-03-20", thermal: "✔", hollowness: "✘", image: "View", percentage: "60%" },
+            { date: "2025-03-18", thermal: "✔", hollowness: "✔", image: "View", percentage: "85%" },
+            { date: "2025-03-15", thermal: "✘", hollowness: "✔", image: "View", percentage: "40%" }
+        ];
+
+        function loadHistory() {
+            const table = document.getElementById("historyTable");
+            table.innerHTML = ""; // Clear previous data
+
+            historyData.forEach((entry, index) => {
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td><input type="checkbox" class="history-checkbox" data-index="${index}"></td>
+                    <td>${entry.date}</td>
+                    <td>${entry.thermal}</td>
+                    <td>${entry.hollowness}</td>
+                    <td><button class="view-btn">🔍</button></td>
+                    <td>${entry.percentage}</td>
+                `;
+                table.appendChild(row);
+            });
+
+            // Reattach event listeners for checkboxes
+            attachCheckboxListeners();
+        }
+
+        function attachCheckboxListeners() {
+            const checkboxes = document.querySelectorAll(".history-checkbox");
+            const deleteBtn = document.getElementById("delete-btn");
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener("change", () => {
+                    deleteBtn.disabled = !document.querySelector(".history-checkbox:checked");
+                });
+            });
+        }
+
+        function deleteSelected() {
+            const checkboxes = document.querySelectorAll(".history-checkbox:checked");
+            checkboxes.forEach(checkbox => {
+                const index = checkbox.dataset.index;
+                historyData.splice(index, 1);
+            });
+
+            loadHistory(); // Reload updated history list
+        }
+
+        function goPrevious() {
+            window.location.href = "Dashboard.html"; // Change to the actual previous page
+        }
+
+        // Initial load
+        loadHistory();
+    </script>
+</body>
+</html>

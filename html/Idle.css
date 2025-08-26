@@ -1,0 +1,39 @@
+/* Reset default margin & padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Fullscreen Splash */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsive Logo */
+.logo {
+    max-width: 90vw;  /* Fit within viewport width */
+    max-height: 90vh; /* Fit within viewport height */
+    object-fit: contain;
+    animation: zoomIn 1.5s ease-out;
+}
+
+/* Zoom In Animation */
+@keyframes zoomIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=800, height=400">
+    <title>YOLOv8 Detection</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <video id="video" width="640" height="400" autoplay></video>
+    <button id="capture">Capture</button>
+    <canvas id="canvas" width="640" height="400" style="display:none;"></canvas>
+    <img id="result" src="" width="640" height="400">
+
+    <script>
+        $(document).ready(function () {
+            // Open USB camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    document.getElementById("video").srcObject = stream;
+                })
+                .catch(function (err) {
+                    alert("Camera access denied: " + err);
+                });
+
+            // Capture image & send to PHP for YOLO processing
+            $("#capture").click(function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                var video = document.getElementById("video");
+
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                var imageData = canvas.toDataURL("image/jpeg");
+
+                $.ajax({
+                    type: "POST",
+                    url: "process.php",
+                    data: { image: imageData },
+                    success: function (response) {
+                        if (response !== "error") {
+                            $("#result").attr("src", response);
+                        } else {
+                            alert("Error processing image");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

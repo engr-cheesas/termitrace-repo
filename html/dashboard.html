@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <div class="logo-container">
+        <img src="./images/logo.png" alt="Termitrace Logo" class="logo" />
+      </div>
+      <div class="menu">
+        <button class="menu-btn" onclick="handleDetection()">Detection</button>
+        <button class="menu-btn" onclick="handleHistory()">History</button>
+        <button class="menu-btn" onclick="handleexterminate()">Exterminate</button>
+        
+        
+      </div>
+    </div>
+
+    <script>
+      function handleLogout() {
+        window.location.href = "home.html"; 
+      }
+      function handleDetection() {
+        window.location.href = "./detection/detection.html"; 
+      }
+      function handleHistory() {
+        window.location.href = "history.php"; 
+      }
+      function handleexterminate() {
+        window.location.href = "exterminate.php"; 
+      }
+      function handleHelp() {
+        window.location.href = "help.html"; 
+      }
+    </script>
+  </body>
+</html>

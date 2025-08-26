@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exterminate Heatgun Control</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>Exterminate Heatgun Control</h2>
+    <button id="btnOn">Exterminate On</button>
+    <button id="btnOff">Exterminate Off</button>
+    <p id="response"></p>
+
+    <script>
+        $(document).ready(function(){
+            $("#btnOn").click(function(){
+                $.ajax({
+                    url: "run_python.php",
+                    type: "POST",
+                    data: { action: "on" },
+                    success: function(response) {
+                        $("#response").text(response);
+                    },
+                    error: function(xhr, status, error) {
+                        $("#response").text("Error: " + error);
+                    }
+                });
+            });
+
+            $("#btnOff").click(function(){
+                $.ajax({
+                    url: "run_python.php",
+                    type: "POST",
+                    data: { action: "off" },
+                    success: function(response) {
+                        $("#response").text(response);
+                    },
+                    error: function(xhr, status, error) {
+                        $("#response").text("Error: " + error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

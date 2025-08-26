@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Knocking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="wizimage.css"/>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content {
+            margin-bottom: 0px;
+        }
+        #video-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        video {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        #result {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        #result-info {
+            display: none;
+            max-width: 300px;
+        }
+
+        #canvas {
+            display: none;
+        }
+
+        #capture, #try-again {
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            display: block;
+        }
+
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        #loading img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+        p {
+            text-align: left;
+            margin-left: 40px;
+        }
+        
+
+        @media (max-width: 800px) {
+            #video-container {
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            #result-info {
+                text-align: center;
+            }
+            #img {
+                width: 100%;
+                height: auto;
+            }
+
+            #capture, #try-again {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+        }
+
+        .btn.next {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <img src="loading.gif" alt="Processing...">
+    </div>
+    <div class="instruction-container">
+        <div class="progress-bar">
+            <div class="step completed">1</div>
+            <div class="line"></div>
+            <div class="step completed">2</div>
+            <div class="line"></div>
+            <div class="step completed">3</div>
+            <div class="line"></div>
+            <div class="step active">4</div>
+            <div class="line"></div>
+            <div class="step">5</div>
+            <div class="line"></div>
+            <div class="step">6</div>
+        </div>
+
+        <h2 class="title">IMAGE PROCESSING</h2>
+
+        <div class="content">
+            <div id="video-container">
+                <video id="video" autoplay></video>
+                <img id="result" src="" style="display: none;" />
+                <div id="result-info">
+                    <h2>Result</h2>
+                    <p><strong>Detections:</strong> <span id="detections"></span></p>
+                    <p><strong>Average Confidence:</strong> <span id="avg-confidence"></span></p>
+                    <p><strong>Max Confidence:</strong> <span id="max-confidence"></span></p>
+                    <p><strong>Findings:</strong> <span id="findings"></span></p>
+                </div>
+            </div>
+
+            <canvas id="canvas" width="512" height="384"></canvas>
+        </div>
+        
+        <div class="navigation-buttons">
+            <button class="btn previous" onclick="goPrevious()">PREVIOUS</button>
+            <button class="btn start" id="capture">START DETECTION</button>
+            <button class="btn next" onclick="goNext()">NEXT</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Access camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    document.getElementById("video").srcObject = stream;
+                })
+                .catch(function (err) {
+                    alert("Camera access denied: " + err);
+                });
+
+            // Capture and send image to process.php
+            $("#capture").click(function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                var video = document.getElementById("video");
+
+                $("#capture").hide();
+                $("#video").hide();
+                $("#loading").css("display", "flex");
+
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                var imageData = canvas.toDataURL("image/jpeg");
+
+                $.ajax({
+                    type: "POST",
+                    url: "process.php",
+                    data: { image: imageData },
+                    dataType: "json",
+                    success: function (response) {
+                        console.log("Raw response:", response);
+                        $("#loading").hide();
+
+                        if (!response || response.error) {
+                            alert("Error: " + (response.error || "Unknown"));
+                            $("#capture").show();
+                            $("#video").show();
+                            return;
+                        }
+
+                        // Show result
+                        $("#result").attr("src", response.image_path).show();
+                        $("#detections").text(response.num_detections);
+                        $("#avg-confidence").text(parseFloat(response.avg_confidence).toFixed(2));
+                        $("#max-confidence").text(parseFloat(response.max_confidence).toFixed(2));
+                        $("#findings").text(response.findings);
+                        $("#result-info").fadeIn();
+
+                        $(".btn.next").show();
+                    },
+                    error: function (xhr, status, error) {
+                        $("#loading").hide();
+                        alert("An error occurred: " + error);
+                        console.error("AJAX error:", xhr.responseText);
+                        $("#capture").show();
+                        $("#video").show();
+                    }
+                });
+            });
+        });
+
+        function goPrevious() {
+            window.location.href = "detection/wizhollowness.html";
+        }
+
+        function goNext() {
+            window.location.href = "detection/wizard/wizresult.php";
+        }
+    </script>
+</body>
+</html>

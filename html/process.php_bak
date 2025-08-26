@@ -1,0 +1,33 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+if (isset($_POST["image"])) {
+    $data = $_POST["image"];
+    $data = str_replace("data:image/jpeg;base64,", "", $data);
+    $data = base64_decode($data);
+
+    // Define paths
+    $input_image = "/var/www/html/uploads/input.jpg";
+    $output_image = "/var/www/html/uploads/result.jpg";
+
+    // Save the uploaded image
+    file_put_contents($input_image, $data);
+
+    // Run YOLOv8 as the "pi" user
+    $command = "sudo -u pi python3 /var/www/html/yolo_detect.py " . escapeshellarg($input_image) . " " . escapeshellarg($output_image) . " 2>&1";
+    $output = shell_exec($command);
+
+    // Log output for debugging
+    file_put_contents("/var/www/html/debug.log", "YOLO Output:\n" . $output . "\n", FILE_APPEND);
+
+    // Check if result image exists
+    if (file_exists($output_image)) {
+        echo "uploads/result.jpg"; // Send path back to frontend
+    } else {
+        echo "error";
+    }
+} else {
+    file_put_contents("/home/pi/debug.log", "No image received\n", FILE_APPEND);
+}
+?>

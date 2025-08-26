@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <div class="home-container">
+      <div class="overlay">
+        <img src="./images/logo.png" alt="Termitrace Logo" class="logo" />
+        <h1>Welcome to Termitrace</h1>
+        <p>
+          Termite Detection and Extermination System for Regular Household
+          Wooden Structures using Machine Learning
+        </p>
+        <div class="buttons">
+          <button class="btn primary" onclick="redirectToLogin()">
+            Get started
+          </button>
+          
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function redirectToLogin() {
+        window.location.href = "dashboard.html";
+      }
+    </script>
+  </body>
+</html>

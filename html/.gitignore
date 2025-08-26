@@ -1,0 +1,49 @@
+# ==========================
+# Logs & debug
+# ==========================
+*.log
+*.txt
+debug.log
+error.log
+serial_log.txt
+thermal_log.txt
+hotspot_data.txt
+
+# ==========================
+# Backup / temp files
+# ==========================
+*.bak
+*.bak.*
+*.best
+*.bak.php
+*.bak.css
+*.bak.js
+*.bak.html
+
+# ==========================
+# Generated results / runtime data
+# ==========================
+*.json
+*.jpg
+*.jpeg
+*.png
+*.gif
+
+# ==========================
+# Uploads & large generated dirs
+# ==========================
+uploads/
+images/
+snapshots/
+detection/
+
+# ==========================
+# Credentials / sensitive configs
+# ==========================
+dbconnector.php
+
+# ==========================
+# Python cache
+# ==========================
+__pycache__/
+*.pyc
