@@ -1,0 +1,178 @@
+**Termite Detection and Extermination System using Machine Learning
+
+Overview
+
+This project presents a Termite Detection and Extermination System designed for regular household wooden structures. The system integrates acoustic sensing, thermal imaging, and machine learning-based image detection to identify termite infestations, while extermination is performed through a directed hot air mechanism.
+
+The project was developed as a Computer Engineering thesis at Bulacan State University using the Spiral Model (SDLC) to ensure iterative design, risk analysis, and continuous improvements.
+
+🐜 Problem Statement
+
+Termite infestations cause severe and often hidden structural damage, especially in humid regions like the Philippines.
+
+Existing solutions rely heavily on expensive equipment, manual inspections, or chemical pesticides, which pose health and environmental risks.
+
+No integrated system exists that provides both detection and extermination in a single device accessible to homeowners.
+
+💡 Proposed Solution
+
+Our system combines non-invasive detection and eco-friendly extermination by integrating multiple technologies:
+
+🎥 Image Detection (Machine Learning): Identifies termite holes with 88% accuracy and 96% precision.
+
+🔊 Acoustic Analysis: Detects structural anomalies in wood based on knocking frequency response.
+
+🌡️ Thermal Imaging: Identifies temperature variations caused by termite activity.
+
+🔥 Hot Air Extermination: Applies heat treatment that achieved 100% extermination in softwood and up to 82.5% efficiency overall, with optimal results above 50°C.
+
+🧠 Rule-Based Wizard: Ensures extermination is only triggered if at least two detection methods confirm infestation, reducing false positives.
+
+⚙️ System Architecture
+
+Hardware Components:
+
+Raspberry Pi 4B (main controller)
+
+Arduino Nano (sub-controller)
+
+MLX90640 Thermal Camera
+
+MAX9814 Acoustic Sensor
+
+USB Camera
+
+Hot Air Blower (for extermination)
+
+Software Components:
+
+Python (image detection, ML model integration)
+
+OpenCV (image processing)
+
+Embedded C / Arduino IDE (sensor control)
+
+Spiral Model methodology for iterative development
+
+📊 Key Results
+
+Detection Performance:
+
+Image Detection: 88% accuracy, 96% precision, 80.67% recall
+
+Acoustic Analysis: Clear frequency distinction (infested: ~1362 Hz vs. uninfested: ~2757 Hz)
+
+Thermal Imaging: Reliable detection of severe infestations with avg. +2.73°C anomaly
+
+Extermination Efficiency:
+
+Hardwood: 52.17% average extermination
+
+Softwood: 82.50% average extermination
+
+Full extermination achieved at ≥50°C and +19°C internal temp rise
+
+User Evaluation (ISO/IEC 25010:2023):
+✅ Functional Suitability: High
+✅ Usability: Highest rating
+✅ Safety: High
+⚠️ Performance Efficiency: Identified as main area for improvement
+
+🚀 Features
+
+Non-chemical, eco-friendly termite control
+Multi-modal detection for higher reliability
+Extermination with safety logic
+Portable, user-friendly hardware design
+
+
+📚 Reference
+
+This project was completed as part of the Computer Engineering Department, Bulacan State University under the Compendium of Student Researches (2023–2024).**# 🐜 Termite Detection and Extermination System using Machine Learning  
+
+## 📌 Overview  
+This project presents a **Termite Detection and Extermination System** designed for regular household wooden structures.  
+The system integrates **acoustic sensing, thermal imaging, and machine learning-based image detection** to identify termite infestations, while extermination is performed through a **directed hot air mechanism**.  
+
+Developed as a **Computer Engineering thesis** at **Bulacan State University**, the project followed the **Spiral Model (SDLC)** to ensure iterative design, risk analysis, and continuous improvements.  
+
+---
+
+## 🐜 Problem Statement  
+- Termite infestations cause **severe and often hidden structural damage**, especially in humid regions like the Philippines.  
+- Existing solutions rely on **expensive equipment, manual inspections, or chemical pesticides**, which pose health and environmental risks.  
+- No integrated system exists that provides **both detection and extermination** in a single device accessible to homeowners.  
+
+---
+
+## 💡 Proposed Solution  
+Our system combines **non-invasive detection** and **eco-friendly extermination** using multiple technologies:  
+
+- 🎥 **Image Detection (Machine Learning):** Identifies termite holes with **88% accuracy** and **96% precision**.  
+- 🔊 **Acoustic Analysis:** Detects anomalies in wood via knocking frequency response.  
+- 🌡️ **Thermal Imaging:** Detects temperature variations caused by termite activity.  
+- 🔥 **Hot Air Extermination:** Achieved **100% extermination in softwood** and up to **82.5% efficiency overall**.  
+- 🧠 **Rule-Based Wizard:** Triggers extermination **only if at least two detection methods confirm infestation**, minimizing false positives.  
+
+---
+
+## ⚙️ System Architecture  
+
+### Hardware Components  
+- Raspberry Pi 4B (main controller)  
+- Arduino Nano (sub-controller)  
+- MLX90640 Thermal Camera  
+- MAX9814 Acoustic Sensor  
+- USB Camera  
+- Hot Air Blower (for extermination)  
+
+### Software Components  
+- Python (image detection, ML model integration)  
+- OpenCV (image processing)  
+- Embedded C / Arduino IDE (sensor control)  
+- Spiral Model methodology for iterative development  
+
+---
+
+## 📊 Key Results  
+
+### Detection Performance  
+- **Image Detection:** 88% accuracy, 96% precision, 80.67% recall  
+- **Acoustic Analysis:** Infested wood ~1362 Hz vs. Uninfested ~2757 Hz  
+- **Thermal Imaging:** +2.73°C average anomaly in heavily infested samples  
+
+### Extermination Efficiency  
+- Hardwood: 52.17% average extermination  
+- Softwood: 82.50% average extermination  
+- **Full extermination at ≥50°C and +19°C temp rise**  
+
+### User Evaluation (ISO/IEC 25010:2023)  
+- ✅ Functional Suitability – High  
+- ✅ Usability – Highest rating  
+- ✅ Safety – High  
+- ⚠️ Performance Efficiency – Needs improvement  
+
+---
+
+## 🚀 Features  
+- Non-chemical, eco-friendly termite control  
+- Multi-modal detection for higher reliability  
+- Automated extermination with safety logic  
+- Portable, user-friendly hardware design  
+
+---
+
+## 👩‍💻 Team Members  
+- Kenneth V. Mazo  
+- Dave Hard M. Roca  
+- Nicole Franchesca R. Usi  
+- Maxine Jeraldine R. Santos  
+
+**Advisers:**  
+- Dr. Monaliza S. Jimenez (Technical Adviser)  
+- Engr. Alexander M. Aquino (Subject Adviser)  
+
+---
+
+## 📚 Reference  
+This project was completed as part of the **Computer Engineering Department, Bulacan State University**, under the **Compendium of Student Researches (2023–2024)**.  
