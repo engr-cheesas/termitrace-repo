@@ -6,6 +6,8 @@ The system integrates **acoustic sensing, thermal imaging, and machine learning-
 
 Developed as a Computer Engineering thesis at Bulacan State University, the project followed the **Spiral Model (SDLC)** to ensure iterative design, risk analysis, and continuous improvements.  
 
+<img width="802" height="469" alt="image" src="https://github.com/user-attachments/assets/0ef810f7-4d27-46c5-ab02-16d4e51707fe" />
+
 ---
 
 ## 🐜 Problem Statement  
@@ -67,22 +69,9 @@ Our system combines **non-invasive detection** and **eco-friendly extermination*
 ## 🚀 Features  
 - Non-chemical, eco-friendly termite control  
 - Multi-modal detection for higher reliability  
-- Automated extermination with safety logic  
+- Extermination with safety logic  
 - Portable, user-friendly hardware design  
 
 ---
 
-## 👩‍💻 Team Members  
-- Kenneth V. Mazo  
-- Dave Hard M. Roca  
-- Nicole Franchesca R. Usi  
-- Maxine Jeraldine R. Santos  
 
-**Advisers:**  
-- Dr. Monaliza S. Jimenez (Technical Adviser)  
-- Engr. Alexander M. Aquino (Subject Adviser)  
-
----
-
-## 📚 Reference  
-This project was completed as part of the **Computer Engineering Department, Bulacan State University**, under the **Compendium of Student Researches (2023–2024)**.  
